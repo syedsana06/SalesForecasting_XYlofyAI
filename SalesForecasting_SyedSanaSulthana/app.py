@@ -45,7 +45,11 @@ st.markdown("---")
 def load_data():
 
     # reading dataset
-    data = pd.read_csv("train.csv")
+     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+     csv_path = os.path.join(BASE_DIR, "train.csv")
+
+     data = pd.read_csv(csv_path)
 
     # converting dates into datetime format
     data["Order Date"] = pd.to_datetime(
@@ -66,7 +70,7 @@ data = load_data()
 # Function to Display Charts
 # -----------------------------
 def display_chart(filename, title):
-    chart_path = os.path.join("Charts", filename)
+    chart_path = os.path.join(BASE_DIR, "Charts", filename)
 
     if os.path.exists(chart_path):
         st.subheader(title)
