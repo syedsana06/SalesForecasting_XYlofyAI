@@ -77,8 +77,18 @@ data = load_data()
 # -----------------------------
 # Function to Display Charts
 # -----------------------------
+# -----------------------------
+# Function to Display Charts
+# -----------------------------
 def display_chart(filename, title):
-    chart_path = os.path.join(BASE_DIR, "Charts", filename)
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    chart_path = os.path.join(
+        BASE_DIR,
+        "Charts",
+        filename
+    )
 
     if os.path.exists(chart_path):
         st.subheader(title)
