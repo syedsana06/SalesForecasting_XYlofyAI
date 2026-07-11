@@ -41,17 +41,24 @@ st.markdown("---")
 # -----------------------------
 # Load Dataset
 # -----------------------------
+# -----------------------------
+# Load Dataset
+# -----------------------------
 @st.cache_data
 def load_data():
 
-    # reading dataset
-     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    import os
 
-     csv_path = os.path.join(BASE_DIR, "train.csv")
+    # Get the folder where app.py is located
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-     data = pd.read_csv(csv_path)
+    # Full path to train.csv
+    csv_path = os.path.join(BASE_DIR, "train.csv")
 
-    # converting dates into datetime format
+    # Read dataset
+    data = pd.read_csv(csv_path)
+
+    # Convert dates
     data["Order Date"] = pd.to_datetime(
         data["Order Date"],
         dayfirst=True
@@ -63,6 +70,7 @@ def load_data():
     )
 
     return data
+
 
 data = load_data()
 
